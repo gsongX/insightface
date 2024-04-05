@@ -15,18 +15,19 @@ import onnxruntime
 from numpy.linalg import norm
 
 from ..model_zoo import model_zoo
-from ..utils import DEFAULT_MP_NAME, ensure_available
+from ..utils import DEFAULT_MP_NAME, ensure_available, INSIGHTFACE_HOME
 from .common import Face
 
 __all__ = ['FaceAnalysis']
 
 class FaceAnalysis:
-    def __init__(self, name=DEFAULT_MP_NAME, root='~/.insightface', allowed_modules=None, **kwargs):
+    def __init__(self, name=DEFAULT_MP_NAME, root=INSIGHTFACE_HOME, allowed_modules=None, **kwargs):
         onnxruntime.set_default_logger_severity(3)
         self.models = {}
         self.model_dir = ensure_available('models', name, root=root)
         onnx_files = glob.glob(osp.join(self.model_dir, '*.onnx'))
         onnx_files = sorted(onnx_files)
+
         for onnx_file in onnx_files:
             model = model_zoo.get_model(onnx_file, **kwargs)
             if model is None:
@@ -40,6 +41,7 @@ class FaceAnalysis:
             else:
                 print('duplicated model task type, ignore:', onnx_file, model.taskname)
                 del model
+
         assert 'detection' in self.models
         self.det_model = self.models['detection']
 

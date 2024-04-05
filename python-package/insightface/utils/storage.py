@@ -5,8 +5,9 @@ import zipfile
 from .download import download_file
 
 BASE_REPO_URL = 'https://github.com/deepinsight/insightface/releases/download/v0.7'
+INSIGHTFACE_HOME = os.getenv("INSIGHTFACE_HOME", "~/.insightface")
 
-def download(sub_dir, name, force=False, root='~/.insightface'):
+def download(sub_dir, name, force=False, root=INSIGHTFACE_HOME):
     _root = os.path.expanduser(root)
     dir_path = os.path.join(_root, sub_dir, name)
     if osp.exists(dir_path) and not force:
@@ -24,10 +25,10 @@ def download(sub_dir, name, force=False, root='~/.insightface'):
     #os.remove(zip_file_path)
     return dir_path
 
-def ensure_available(sub_dir, name, root='~/.insightface'):
+def ensure_available(sub_dir, name, root=INSIGHTFACE_HOME):
     return download(sub_dir, name, force=False, root=root)
 
-def download_onnx(sub_dir, model_file, force=False, root='~/.insightface', download_zip=False):
+def download_onnx(sub_dir, model_file, force=False, root=INSIGHTFACE_HOME, download_zip=False):
     _root = os.path.expanduser(root)
     model_root = osp.join(_root, sub_dir)
     new_model_file = osp.join(model_root, model_file)

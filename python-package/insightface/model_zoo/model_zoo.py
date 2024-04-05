@@ -14,7 +14,7 @@ from .retinaface import *
 from .landmark import *
 from .attribute import Attribute
 from .inswapper import INSwapper
-from ..utils import download_onnx
+from ..utils import download_onnx, INSIGHTFACE_HOME
 
 __all__ = ['get_model']
 
@@ -74,7 +74,7 @@ def get_default_provider_options():
     return None
 
 def get_model(name, **kwargs):
-    root = kwargs.get('root', '~/.insightface')
+    root = kwargs.get('root', INSIGHTFACE_HOME)
     root = os.path.expanduser(root)
     model_root = osp.join(root, 'models')
     allow_download = kwargs.get('download', False)

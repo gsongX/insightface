@@ -4,9 +4,10 @@ This code file mainly comes from https://github.com/dmlc/gluon-cv/blob/master/gl
 import os
 import os.path as osp
 import errno
+from .storage import INSIGHTFACE_HOME
 
 
-def get_model_dir(name, root='~/.insightface'):
+def get_model_dir(name, root=INSIGHTFACE_HOME):
     root = os.path.expanduser(root)
     model_dir = osp.join(root, 'models', name)
     return model_dir

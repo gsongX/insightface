@@ -7,11 +7,11 @@ from .face_analysis import FaceAnalysis
 from ..utils import get_model_dir
 from ..thirdparty import face3d
 from ..data import get_image as ins_get_image
-from ..utils import DEFAULT_MP_NAME
+from ..utils import DEFAULT_MP_NAME, INSIGHTFACE_HOME
 import cv2
 
 class MaskRenderer:
-    def __init__(self, name=DEFAULT_MP_NAME, root='~/.insightface', insfa=None):
+    def __init__(self, name=DEFAULT_MP_NAME, root=INSIGHTFACE_HOME, insfa=None):
         #if insfa is None, enter render_only mode
         self.mp_name = name
         self.root = root

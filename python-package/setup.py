@@ -2,14 +2,14 @@
 import os
 import io
 import glob
-import numpy
+#import numpy
 import re
 import shutil
 import sys
 from setuptools import setup, find_packages
-from distutils.core import Extension
-from Cython.Distutils import build_ext
-from Cython.Build import cythonize
+#from distutils.core import Extension
+#from Cython.Distutils import build_ext
+#from Cython.Build import cythonize
 
 def read(*names, **kwargs):
     with io.open(os.path.join(os.path.dirname(__file__), *names),
@@ -31,11 +31,11 @@ try:
     long_description = pypandoc.convert_file('README.md', 'rst')
 except (IOError, ImportError, ModuleNotFoundError):
     print('WARNING: pandoc not enabled')
-    long_description = open('README.md').read()
+    #long_description = open('README.md').read()
     pypandoc_enabled = False
 
 #import pypandoc
-#long_description = pypandoc.convert('README.md', 'rst')
+long_description = pypandoc.convert('README.md', 'rst')
 VERSION = find_version('insightface', '__init__.py')
 
 requirements = [
@@ -46,7 +46,7 @@ requirements = [
     'matplotlib',
     'Pillow',
     'scipy',
-    #'opencv-python',
+    'opencv-python',
     'scikit-learn',
     'scikit-image',
     'easydict',
@@ -56,7 +56,7 @@ requirements = [
 ]
 
 extensions = [
-        Extension("insightface.thirdparty.face3d.mesh.cython.mesh_core_cython", 
+        Exception("insightface.thirdparty.face3d.mesh.cython.mesh_core_cython", 
             ["insightface/thirdparty/face3d/mesh/cython/mesh_core_cython.pyx", "insightface/thirdparty/face3d/mesh/cython/mesh_core.cpp"], language='c++'),
         ]
 data_images = list(glob.glob('insightface/data/images/*.jpg'))

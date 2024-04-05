@@ -74,18 +74,22 @@ def get_default_provider_options():
     return None
 
 def get_model(name, **kwargs):
-    root = kwargs.get('root', INSIGHTFACE_HOME)
+    root = kwargs.get('root', INSIGHTFACE_HOME)        # root / model_zoo / < project_name > / 
     root = os.path.expanduser(root)
-    model_root = osp.join(root, 'models')
+    model_root = osp.join(root, 'models')                        # ตรงนี้เป็น prefix อีกที model_zoo/ ชื่อโมเดลจริงๆ
     allow_download = kwargs.get('download', False)
-    download_zip = kwargs.get('download_zip', False)
-    if not name.endswith('.onnx'):
+    download_zip = kwargs.get('download_zip', False)             # โมเดลตรงนี้ ไอเจ้าของมันย่ายไปที่อื่นหมดแล้วว
+    if not name.endswith('.onnx'):                               # การใช้ชื่อ model ให้เป็น ชื่อโดดๆ ไม่จำเป็นต้องมี onnx   ตัวอย่างเช่น 
+		print("cannot find " , name ) 
         model_dir = os.path.join(model_root, name)
         model_file = find_onnx_file(model_dir)
         if model_file is None:
             return None
     else:
         model_file = name
+
+    print("\n[ model_file ] : " , osp.exists(model_file) , " : " ,  model_file  )
+
     if not osp.exists(model_file) and allow_download:
         model_file = download_onnx('models', model_file, root=root, download_zip=download_zip)
     assert osp.exists(model_file), 'model_file %s should exist'%model_file

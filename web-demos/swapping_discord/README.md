@@ -1,14 +1,18 @@
-# Using Midjourney and the Picsi.AI by InsightFaceSwap Bot to create a personalized portrait
+# Using Midjourney and the Picsi.AI by InsightFaceSwap Bot to create a personalized portrait and do face swapping
 
-We have named this highly realistic portrait creation tool as ``Picsi.AI``. You can use it for free, or head over to [Patreon](https://www.patreon.com/picsi) to subscribe and access more features and higher usage limits.
+We have integrated our most advanced face-swapping models: **inswapper_cyn** and **inswapper_dax**, into the [Picsi.Ai face-swapping](https://www.picsi.ai)(InsightFace discord bot) service. These models outperform almost all similar commercial products and our open-source model inswapper_128. Please visit the [Picsi.Ai](https://www.picsi.ai) website to use the service and get help.
 
 ## Important Links
 
-1. Discord bot invitation link: https://discord.com/api/oauth2/authorize?client_id=1090660574196674713&permissions=274877945856&scope=bot
+1. InsightFace(insightfaceswap) Discord bot invitation link: https://discord.com/api/oauth2/authorize?client_id=1090660574196674713&permissions=274877945856&scope=bot
 2. Discord discussion server(to get help): https://discord.gg/Ym3X8U59ZN
-3. Patreon subscription: https://www.patreon.com/picsi
+3. Product homepage: https://www.picsi.ai
+4. Subscribe to unlock advanced features: https://www.picsi.ai/subscribe
+5. User guide: https://www.picsi.ai/docs
 
 ## ChangeLog
+
+**`2024-06-07`**: Please visit https://www.patreon.com/picsi to view all recent feature updates.
 
 **`2023-09-09`**: **Introducing HiFidelity Mode (BETA) and Sharpen Options**
 1) Use the ``-f`` command to enable HiFidelity mode: ``/setid example -f`` or ``/swapid example -f``
